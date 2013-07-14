@@ -19,7 +19,7 @@ The shell is very useful for three main reasons:
 
 1. Automating data analysis
 2. Combining existing tools in powerful ways with only a few keystrokes
-3. Interacting with remote machine
+3. Interacting with remote machines
 
 *Start shell in SWC directory with example files?*
 
@@ -60,9 +60,9 @@ Dash is how you introduce options.
 
 To change directories
 
-    cd swc
+    cd SWC
 	
-Since ``swc`` is in our current directory we can just type it's name.
+Since ``SWC`` is in our current directory we can just type it's name.
 We can also specify the full path to allow us to jump to other areas.
 
     cd /home/ethan/
@@ -79,12 +79,12 @@ use ls to list the contents**
 
 If this is starting to feel like a lot of typing use tab.
 
-    cd /h<tab>/e<tab>/U<tab>
+    cd /h<tab>/e<tab>/S<tab>
 	
 If nothing happens then either there is nothing to complete or there is too
 much. A second ``<tab>`` will show you the available options.
 
-Rule #1. If the computer can do it, let the computer do.
+Rule #1. If the computer can do it, let the computer do it.
 
 ### Making directories
 
@@ -92,7 +92,7 @@ We can add new directories using
 
     mkdir swc
 	
-**Add a swc directory for us to work in today;
+**Add a new directory to work in;
 Change directories**
 
 ### Making files
@@ -111,7 +111,7 @@ I can then enter some data the birds that I saw at my field site:
 	2013-03-21 robin 1
 	...
 	
-Control-O saves the file (the ^ in most unix documentation means Control)
+Control-O saves the file (the ^ in most Unix documentation means Control)
 Control-X exits
 
 You can use your favorite text editor for this including graphical ones
@@ -229,9 +229,9 @@ individuals**
 
 ### Other people's programs
 
-Piping together unix tools can be very powerful for automating data analysis.
-I often use this for quick sanity checks on much more complicated Python code,
-But the real power of the piping in my every day life is piping my tools and other
+Piping together unix tools can be very powerful for automating data analysis.  I
+often use this for quick sanity checks on much more complicated Python code, But
+the real power of the piping in my every day life is piping my tools and other
 scientists tools together. This makes it easy to use tools written in languages
 you're not familiar with and to combine tools from different languages.
 
@@ -268,8 +268,8 @@ For example,
 
     cat *.txt
 
-This concatenates all of the files ending in .txt together.
-The shell expands the wildcard before executing cat, so this is identical to
+This concatenates all of the files ending in .txt together.  The shell expands
+the wildcard before executing ``cat``, so this is identical to
 
     cat data_greencanyon_2013.txt data_drycanyon_2013.txt data_logancanyon_2013.txt
 	
