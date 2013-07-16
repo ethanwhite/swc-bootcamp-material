@@ -106,10 +106,12 @@ Let's make a simple data file:
 	
 I can then enter some data on discharge rates from the Logan River:
 
-    2013-07-13 A 102
-	2013-07-13 B 176
-	2013-07-14 A 158
-	...
+    2013-07-14 A 102
+	2013-07-14 B 176
+	2013-07-13 A 158
+	2013-07-13 B 201
+	2013-07-12 A 175
+	2013-07-12 B 226
 	
 Control-O saves the file (the ^ in most Unix documentation means Control)
 Control-X exits
