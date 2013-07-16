@@ -104,11 +104,11 @@ Let's make a simple data file:
 
     nano data.txt
 	
-I can then enter some data the birds that I saw at my field site:
+I can then enter some data on discharge rates from the Logan River:
 
-    2013-03-22 bluejay 5
-	2013-03-22 mallard 9
-	2013-03-21 robin 1
+    2013-07-13 A 102
+	2013-07-13 B 176
+	2013-07-14 A 158
 	...
 	
 Control-O saves the file (the ^ in most Unix documentation means Control)
@@ -143,7 +143,7 @@ We can also use mv to rename files using ``mv`` by "moving" them to a new
 file name. Since ``data.txt`` isn't very informative let's give it a
 meaningful file name so that we remember what it actually contains.
 
-    mv data.txt data_greencanyon_2013.txt
+    mv data.txt data_loganriver_2013.txt
 	ls
 
 **Create a backup of your datafile, you do keep backups of your data right?;
@@ -154,7 +154,7 @@ Give both the original data file and the backup file meaningful names**
 
 If need to get rid of any extra files you can remove them
 
-    cp data_greencanyon_2013.txt more_data.txt
+    cp data_littlebearriver_2013.txt more_data.txt
 	ls
 	rm more_data.txt
 	ls
@@ -167,45 +167,46 @@ shell for automatic data analysis**
 Now that we know how to work with the shell we can use it to do powerful things
 by combining lots of small built in programs.
 
-Let's say we need to find the data row with the most species.
+Let's say we need to find the data row with the highest discharge rate.
 
 Let's start by looking at the data in our file. *always a good idea*
 We can do this in the shell using the ``cat`` command. This stands for
 concatenate.
 
-    cat data_greencanyon_2013.txt
+    cat data_littlebearriver_2013.txt
 
 We can start by sorting the data
 
-    sort data_greencanyon_2013.txt
+    sort data_littlebearriver_2013.txt
 
 This sorts things but it sorts them by the wrong column, so we can tell the 
-shell to sort based on the second column by giving it an optional argument.
+shell to sort based on the column we want by giving it an optional argument.
 To find out what this argument is we can use --help.
 
     sort --help
 	
 *To avoid retyping the original line use the up arrow.*
 	
-    sort data_greencanyon_2013.txt -k 3
+    sort data_littlebearriver_2013.txt -k 3 -n
 	
-We can now look at the bottom of the output and see the most abundant species,
-but we'd like to be able to store that information for later use.
+We can now look at the bottom of the output and see the record with the highest
+discharge rate, but we'd like to be able to store that information for later
+use.
 
 To store the output as a file we use a > sign.
 
-    sort data_greencanyon_2013.txt -k 3 > sorted_counts.txt
-	cat sorted_counts.txt
+    sort data_littlebearriver_2013.txt -k 3 -n > sorted_rates.txt
+	cat sorted_rates.txt
 	
-Now we've got a sorted list, but we really just want the data on the most
-common species. We can get the end of the file using ``tail``
+Now we've got a sorted list, but we really just want the data on the highest
+discharge rate. We can get the end of the file using ``tail``
 
-    tail sorted_counts.txt
-	tail -1 sorted_counts.txt
+    tail sorted_rates.txt
+	tail -1 sorted_rates.txt
 
-**EXERCISE: Find the row with the fewest individuals and print it's info;
-You'll need to use either head, the opposite of tail, or add an argument
-to sort; use --help to get more information**
+**EXERCISE: Find the row with the lowest discharge rate and print it's info;
+You'll need to use either head, the opposite of tail, or add an argument to
+sort; use --help or Google to get more information**
 
 ### History
 
@@ -217,15 +218,15 @@ straight to the next program.
 
 So, the commands we just wrote:
 
-    sort data_greencanyon_2013.txt -k 2 > sorted_counts.txt
-	head sorted_counts.txt -1
+    sort data_littlebearriver_2013.txt -k 3 -n > sorted_rates.txt
+	head sorted_rates.txt -1
 
 can be written like this:
 
-    sort data_greencanyon_2013.txt -k 2 | head -1
+    sort data_littlebearriver_2013.txt -k 3 -n | head -1
 	
-**Use pipes with sort, head, and tail to find the data row with the second most
-individuals**
+**Use pipes with sort, head, and tail to find the data row with the second
+highest discharge rate**
 
 ### Other people's programs
 
@@ -233,12 +234,13 @@ Piping together unix tools can be very powerful for automating data analysis.  I
 often use this for quick sanity checks on much more complicated Python code, But
 the real power of the piping in my every day life is piping my tools and other
 scientists tools together. This makes it easy to use tools written in languages
-you're not familiar with and to combine tools from different languages.
+you're not familiar with and to combine tools from different languages in a
+single analysis.
 
-So, let's say we want to count the total number of individuals of each species
-that were seen in Green Canyon in 2013. We might be able solve this problem
-ourselves, but our lab mate has already written some code that does this.
-Instead of rewriting the code ourselves we can simply add it to a pipeline.
+So, let's say we want to determine the average discharge rate of each station on
+the Little Bear River in 2013. We might be able solve this problem ourselves,
+but our lab mate has already written some code that does this.  Instead of
+rewriting the code ourselves we can simply add it to a pipeline.
 
 *The code is available on the etherpad*
 
@@ -246,15 +248,15 @@ To run this code we need to tell the shell to run it using python, which we do
 by giving it the name of the program that will run it, then the name of our
 program, and then the input.
 
-    python species_counts.py data_greencanyon_2013.txt
+    python avg_station_discharge.py data_littlebearriver_2013.txt
 	
 This can then be integrated into our pipeline. So if we want to sort based
-on the total number of individuals:
+on the average discharge:
 	
-    python species_counts.py testdata.txt | sort -k 2
+    python avg_station_discharge.py data_littlebearriver_2013.txt | sort -k 3 -n
 
-**EXERCISE: Create a text file that contains the counts of each species sorted
-alphabetically by species name.**
+**EXERCISE: Create a text file that contains the average discharge of each
+  station sorted alphabetically by station**
 
 
 ### Wild cards
@@ -271,18 +273,18 @@ For example,
 This concatenates all of the files ending in .txt together.  The shell expands
 the wildcard before executing ``cat``, so this is identical to
 
-    cat data_greencanyon_2013.txt data_drycanyon_2013.txt data_logancanyon_2013.txt
+    cat data_littlebearriver_2013.txt data_drycreek_2013.txt data_loganriver_2013.txt
 	
 We can use this to get the most common species at any of the sites
 
-    cat *.txt | python species_counts.py | sort -k 2 | tail -1
+    cat *.txt | python avg_station_discharge.py | sort -k 3 -n | tail -1
 	
 ### Loops
 
     for datafile in *.txt
 	do
 	    echo $datafile
-		python species_counts.py $datafile
+		python avg_station_discharge.py $datafile
 	done
 
 **EXERCISE: Write a loop that prints out the name of each datafile followed by
@@ -294,6 +296,6 @@ Once we have the commands that we want working, we often want to use them again.
 To do this easily we can store them in a script. We do this by adding the
 commands to a text file and then running that text file from the command line:
 
-    bash most_common.sh
+    bash avg_discharge.sh
 
 ### History
