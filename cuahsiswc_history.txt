@@ -1,0 +1,70 @@
+  750  pwd
+  751  ls
+  752  ls -F
+  753  cd SWC
+  754  ls
+  755  cd /home/ethan
+  756  pwd
+  757  cd /home/ethan/
+  758  pwd
+  759  mkdir swc
+  760  cd swc/
+  761  ls
+  762  gedit data.txt
+  763  ls
+  764  cp data.txt data_copy.txt
+  765  ls
+  766  mkdir temp
+  767  ls
+  768  mv data_copy.txt temp/
+  769  ls
+  770  cd temp/
+  771  ls
+  772  mv data_copy.txt data_copy_2.txt
+  773  ls
+  774  cd ../
+  775  ls
+  776  mv data.txt data_loganriver_2013.txt
+  777  ls ../
+  778  ls
+  779  cd ../
+  780  ls SWC/
+  781  ls
+  782  cd SWC/
+  783  ls
+  784  cp data_loganriver_2013.txt data_copy.txt
+  785  rm data_copy.txt 
+  786  ls
+  787  clear
+  788  cat data_littlebearriver_2013.txt 
+  789  sort data_littlebearriver_2013.txt 
+  790  sort --help
+  791  clear
+  792  sort -k 3 data_littlebearriver_2013.txt 
+  793  sort -k 3 -n data_littlebearriver_2013.txt 
+  794  sort -k 3 -n data_littlebearriver_2013.txt > sorted_rates.txt
+  795  ls
+  796  cat sorted_rates.txt 
+  797  tail sorted_rates.txt 
+  798  tail -1 sorted_rates.txt 
+  799  head -1 sorted_rates.txt 
+  800  sort -k 3 -n data_littlebearriver_2013.txt | head -1
+  801  ls
+  802  python avg_discharge_rate.py data_littlebearriver_2013.txt 
+  803  python avg_discharge_rate.py data_littlebearriver_2013.txt | sort -k 2 -n
+  804  python avg_discharge_rate.py data_littlebearriver_2013.txt | sort -k 2 -n | tail -1
+  805  clear
+  806  history 
+  807  history > myanalysis_2013_07_16.txt
+  808  gedit my_awesome_analysis.sh
+  809  bash my_awesome_analysis.sh 
+  810  gedit my_awesome_analysis.sh
+  811  bash my_awesome_analysis.sh 
+  812  gedit my_awesome_analysis.sh
+  813  gedit avg_discharge_all_files.sh
+  814  ls
+  815  bash avg_discharge_all_files.sh 
+  816  gedit avg_discharge_all_files.sh
+  817  bash avg_discharge_all_files.sh 
+  818  gedit avg_discharge_all_files.sh
+  819  history > cuahsiswc_history.txt
