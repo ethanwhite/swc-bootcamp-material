@@ -75,7 +75,7 @@ Windows users need to start full paths with the drive letter.
 use pwd to see where you are;
 use ls to list the contents**
 
-#### Autocomplete
+#### Autocomplete / Up & Down Arrows
 
 If this is starting to feel like a lot of typing use tab.
 
@@ -84,7 +84,10 @@ If this is starting to feel like a lot of typing use tab.
 If nothing happens then either there is nothing to complete or there is too
 much. A second ``<tab>`` will show you the available options.
 
-Rule #1. If the computer can do it, let the computer do it.
+You can also use the up and down arrows to cycle through commands and edit only
+the part of a command that you want to change.
+
+**Rule #1. If the computer can do it, let the computer do it.**
 
 ### Making directories
 
@@ -92,8 +95,6 @@ We can add new directories using
 
     mkdir swc
 	
-**Add a new directory to work in;
-Change directories**
 
 ### Making files
 
