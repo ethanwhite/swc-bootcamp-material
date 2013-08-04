@@ -218,12 +218,12 @@ straight to the next program.
 
 So, the commands we just wrote:
 
-    sort data_greencanyon_2013.txt -k 2 > sorted_counts.txt
-	head sorted_counts.txt -1
+    sort data_greencanyon_2013.txt -k 3 > sorted_counts.txt
+	head -1 sorted_counts.txt
 
 can be written like this:
 
-    sort data_greencanyon_2013.txt -k 2 | head -1
+    sort data_greencanyon_2013.txt -k 3 | head -1
 	
 **Use pipes with sort, head, and tail to find the data row with the second most
 individuals**
