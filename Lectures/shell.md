@@ -186,16 +186,19 @@ To find out what this argument is we can use --help.
 
     sort --help
 	
-*To avoid retyping the original line use the up arrow.*
+We can also see that if we want to sort numerically (rather than alphabetically)
+we need to use the -n flag.
 	
-    sort data_greencanyon_2013.txt -k 3
+*To avoid retyping the original line use the up arrow.*
+
+    sort data_greencanyon_2013.txt -k 3 -n
 	
 We can now look at the bottom of the output and see the most abundant species,
 but we'd like to be able to store that information for later use.
 
 To store the output as a file we use a > sign.
 
-    sort data_greencanyon_2013.txt -k 3 > sorted_counts.txt
+    sort data_greencanyon_2013.txt -k 3 -n > sorted_counts.txt
 	cat sorted_counts.txt
 	
 Now we've got a sorted list, but we really just want the data on the most
@@ -218,12 +221,12 @@ straight to the next program.
 
 So, the commands we just wrote:
 
-    sort data_greencanyon_2013.txt -k 3 > sorted_counts.txt
+    sort data_greencanyon_2013.txt -k 3 -n > sorted_counts.txt
 	head -1 sorted_counts.txt
 
 can be written like this:
 
-    sort data_greencanyon_2013.txt -k 3 | head -1
+    sort data_greencanyon_2013.txt -k 3 -n | head -1
 	
 **Use pipes with sort, and head or tail to find the data row with the fewest
 individuals**
@@ -252,7 +255,7 @@ program, and then the input.
 This can then be integrated into our pipeline. So if we want to sort based
 on the total number of individuals:
 	
-    python species_counts.py testdata.txt | sort -k 2
+    python species_counts.py testdata.txt | sort -k 2 -n
 
 **EXERCISE: Create a text file that contains the counts of each species sorted
 alphabetically by species name.**
