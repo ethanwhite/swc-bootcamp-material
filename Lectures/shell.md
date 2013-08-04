@@ -225,13 +225,13 @@ can be written like this:
 
     sort data_greencanyon_2013.txt -k 3 | head -1
 	
-**Use pipes with sort, head, and tail to find the data row with the second most
+**Use pipes with sort, and head or tail to find the data row with the fewest
 individuals**
 
 ### Other people's programs
 
 Piping together unix tools can be very powerful for automating data analysis.  I
-often use this for quick sanity checks on much more complicated Python code, But
+often use this for quick sanity checks on much more complicated Python code. But
 the real power of the piping in my every day life is piping my tools and other
 scientists tools together. This makes it easy to use tools written in languages
 you're not familiar with and to combine tools from different languages.
