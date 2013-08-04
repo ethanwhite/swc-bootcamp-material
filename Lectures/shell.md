@@ -213,8 +213,6 @@ common species. We can get the end of the file using ``tail``
 You'll need to use either head, the opposite of tail, or add the -r argument
 to sort to data the list in reverse**
 
-### History
-
 ### Pipes
 
 We can also skip the intermediate files by using pipes.
@@ -264,6 +262,23 @@ on the total number of individuals:
 **EXERCISE: Create a text file that contains the counts of each species sorted
 alphabetically by species name.**
 
+### History
+
+Who remembers every command we've run so for this morning?
+
+### Bash scripting
+
+History is great, but typically once we have the commands that we want working,
+we often want to use them again.  To do this easily we can store them in a
+script. We do this by adding the commands to a text file and then running that
+text file from the command line.
+
+    python species_counts.py data_greencanyon_2013.txt |
+	sort -k 2 -n |
+	tail -1
+
+Now, anytime we update our data file we can rerun this function and
+automatically rerun our analysis.
 
 ### Wild cards
 
@@ -287,6 +302,10 @@ We can use this to get the most common species at any of the sites
 	
 ### Loops
 
+This is great for a single datafile with a particular name, but we've been
+collecting data on birds from a number of different places and we'd like to
+conduct all of these analyese simultaneously
+
     for datafile in *.txt
 	do
 	    echo $datafile
@@ -295,13 +314,3 @@ We can use this to get the most common species at any of the sites
 
 **EXERCISE: Write a loop that prints out the name of each datafile followed by
 the most common species in that datafile.**
-
-### Scripts
-
-Once we have the commands that we want working, we often want to use them again.
-To do this easily we can store them in a script. We do this by adding the
-commands to a text file and then running that text file from the command line:
-
-    bash most_common.sh
-
-### History
