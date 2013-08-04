@@ -146,6 +146,8 @@ meaningful file name so that we remember what it actually contains.
 
     mv data.txt data_greencanyon_2013.txt
 	ls
+	
+**Rule #2. Always use meaningful names.**
 
 **Create a backup of your datafile, you do keep backups of your data right?;
 Make a directory called backup;
@@ -238,6 +240,8 @@ often use this for quick sanity checks on much more complicated Python code. But
 the real power of the piping in my every day life is piping my tools and other
 scientists tools together. This makes it easy to use tools written in languages
 you're not familiar with and to combine tools from different languages.
+
+**Rule #3. Don't reinvent the wheel.**
 
 So, let's say we want to count the total number of individuals of each species
 that were seen in Green Canyon in 2013. We might be able solve this problem
