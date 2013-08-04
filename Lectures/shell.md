@@ -168,7 +168,7 @@ shell for automatic data analysis**
 Now that we know how to work with the shell we can use it to do powerful things
 by combining lots of small built in programs.
 
-Let's say we need to find the data row with the most species.
+Let's say we need to find the data row with the most individuals.
 
 Let's start by looking at the data in our file. *always a good idea*
 We can do this in the shell using the ``cat`` command. This stands for
