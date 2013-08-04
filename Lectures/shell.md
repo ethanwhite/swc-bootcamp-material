@@ -205,8 +205,8 @@ common species. We can get the end of the file using ``tail``
 	tail -1 sorted_counts.txt
 
 **EXERCISE: Find the row with the fewest individuals and print it's info;
-You'll need to use either head, the opposite of tail, or add an argument
-to sort; use --help to get more information**
+You'll need to use either head, the opposite of tail, or add the -r argument
+to sort to data the list in reverse**
 
 ### History
 
