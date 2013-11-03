@@ -7,7 +7,7 @@ Introduction
 We're here to teach you about computers and computers really do four things:
 
 * run programs
-* store data 
+* store data
 * communicate with each other
 * and interact with us
 
@@ -45,14 +45,14 @@ can interact with files and directories/folder using the command line.
 To take a look at what's in the current directory use
 
     ls
-	
+
 which stands for "listing". This will print out a list of files and directories
 just like those shown in the GUI. In some cases the directories will be colored
 but if not we can see which names are directories and which are files by
 using the -F argument
 
     ls -F
-	
+
 which adds a trailing slash to the directories.
 Dash is how you introduce options.
 
@@ -61,12 +61,12 @@ Dash is how you introduce options.
 To change directories
 
     cd SWC
-	
+
 Since ``SWC`` is in our current directory we can just type it's name.
 We can also specify the full path to allow us to jump to other areas.
 
     cd /home/ethan/
-	
+
 Windows users need to start full paths with the drive letter.
 
     cd /c/Users/username
@@ -80,7 +80,7 @@ use ls to list the contents**
 If this is starting to feel like a lot of typing use tab.
 
     cd /h<tab>/e<tab>/S<tab>
-	
+
 If nothing happens then either there is nothing to complete or there is too
 much. A second ``<tab>`` will show you the available options.
 
@@ -94,7 +94,7 @@ the part of a command that you want to change.
 We can add new directories using
 
     mkdir swc
-	
+
 
 ### Making files
 
@@ -104,14 +104,14 @@ To make a new file we simply type ``nano`` and then the name of the file.
 Let's make a simple data file:
 
     nano data.txt
-	
+
 I can then enter some data the birds that I saw at my field site:
 
     2013-03-22 bluejay 5
-	2013-03-22 mallard 9
-	2013-03-21 robin 1
-	...
-	
+    2013-03-22 mallard 9
+    2013-03-21 robin 1
+    ...
+
 Control-O saves the file (the ^ in most Unix documentation means Control)
 Control-X exits
 
@@ -129,24 +129,24 @@ use ls to confirm that your file exists**
 We can make copies of files using ``cp``
 
     cp data.txt data_copy.txt
-	ls
+    ls
 
 And we can move files using ``mv``
 
     mkdir temp
-	ls
-	mv data_copy.txt temp
-	ls
-	cd temp
-	ls
+    ls
+    mv data_copy.txt temp
+    ls
+    cd temp
+    ls
 
 We can also use mv to rename files using ``mv`` by "moving" them to a new
 file name. Since ``data.txt`` isn't very informative let's give it a
 meaningful file name so that we remember what it actually contains.
 
     mv data.txt data_greencanyon_2013.txt
-	ls
-	
+    ls
+
 **Rule #2. Always use meaningful names.**
 
 **Create a backup of your datafile, you do keep backups of your data right?;
@@ -158,9 +158,9 @@ Give both the original data file and the backup file meaningful names**
 If need to get rid of any extra files you can remove them
 
     cp data_greencanyon_2013.txt more_data.txt
-	ls
-	rm more_data.txt
-	ls
+    ls
+    rm more_data.txt
+    ls
 
 **BREAK: When we come back we'll learn about how to harness the power of the
 shell for automatic data analysis**
@@ -182,32 +182,32 @@ We can start by sorting the data
 
     sort data_greencanyon_2013.txt
 
-This sorts things but it sorts them by the wrong column, so we can tell the 
+This sorts things but it sorts them by the wrong column, so we can tell the
 shell to sort based on the second column by giving it an optional argument.
 To find out what this argument is we can use --help.
 
     sort --help
-	
+
 We can also see that if we want to sort numerically (rather than alphabetically)
 we need to use the -n flag.
-	
+
 *To avoid retyping the original line use the up arrow.*
 
     sort data_greencanyon_2013.txt -k 3 -n
-	
+
 We can now look at the bottom of the output and see the most abundant species,
 but we'd like to be able to store that information for later use.
 
 To store the output as a file we use a > sign.
 
     sort data_greencanyon_2013.txt -k 3 -n > sorted_counts.txt
-	cat sorted_counts.txt
-	
+    cat sorted_counts.txt
+
 Now we've got a sorted list, but we really just want the data on the most
 common species. We can get the end of the file using ``tail``
 
     tail sorted_counts.txt
-	tail -1 sorted_counts.txt
+    tail -1 sorted_counts.txt
 
 **EXERCISE: Find the row with the fewest individuals and print it's info;
 You'll need to use either head, the opposite of tail, or add the -r argument
@@ -222,12 +222,12 @@ straight to the next program.
 So, the commands we just wrote:
 
     sort data_greencanyon_2013.txt -k 3 -n > sorted_counts.txt
-	head -1 sorted_counts.txt
+    head -1 sorted_counts.txt
 
 can be written like this:
 
     sort data_greencanyon_2013.txt -k 3 -n | head -1
-	
+
 **Use pipes with sort, and head or tail to find the data row with the fewest
 individuals**
 
@@ -253,10 +253,10 @@ by giving it the name of the program that will run it, then the name of our
 program, and then the input.
 
     python species_counts.py data_greencanyon_2013.txt
-	
+
 This can then be integrated into our pipeline. So if we want to sort based
 on the total number of individuals:
-	
+
     python species_counts.py testdata.txt | sort -k 2 -n
 
 **EXERCISE: Create a text file that contains the counts of each species sorted
@@ -274,8 +274,8 @@ script. We do this by adding the commands to a text file and then running that
 text file from the command line.
 
     python species_counts.py data_greencanyon_2013.txt |
-	sort -k 2 -n |
-	tail -1
+    sort -k 2 -n |
+    tail -1
 
 Now, anytime we update our data file we can rerun this function and
 automatically rerun our analysis.
@@ -295,11 +295,11 @@ This concatenates all of the files ending in .txt together.  The shell expands
 the wildcard before executing ``cat``, so this is identical to
 
     cat data_greencanyon_2013.txt data_drycanyon_2013.txt data_logancanyon_2013.txt
-	
+
 We can use this to get the most common species at any of the sites
 
     cat *.txt | python species_counts.py | sort -k 2 | tail -1
-	
+
 ### Loops
 
 This is great for a single datafile with a particular name, but we've been
@@ -307,10 +307,10 @@ collecting data on birds from a number of different places and we'd like to
 conduct all of these analyese simultaneously
 
     for datafile in *.txt
-	do
-	    echo $datafile
-		python species_counts.py $datafile
-	done
+    do
+        echo $datafile
+        python species_counts.py $datafile
+    done
 
 **EXERCISE: Write a loop that prints out the name of each datafile followed by
 the most common species in that datafile.**

@@ -158,8 +158,8 @@ to understand.  It is equivalent to saying ``WHERE (species = "DM") OR (species
     SELECT * FROM surveys WHERE (year >= 2000) AND (species IN ("DM", "DO", "DS"));
 
     SELECT *
-	FROM surveys
-	WHERE (year >= 2000) AND (species IN ("DM", "DO", "DS"));
+    FROM surveys
+    WHERE (year >= 2000) AND (species IN ("DM", "DO", "DS"));
 
 We started with something simple, then added more clauses one by one, testing
 their effects as we went along.  For complex queries, this is a good strategy,
@@ -241,7 +241,7 @@ We can also find out how much all of those individuals weigh.
 
 There are many other aggregate functions included in SQL including
 MAX, MIN, and AVG.
- 
+
 ***From the surveys table, can we use one query to output the total weight,
    average weight, and the min and max weights?***
 

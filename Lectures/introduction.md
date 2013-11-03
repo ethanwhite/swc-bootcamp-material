@@ -7,7 +7,7 @@ I'm a faculty member in the Biology Department at Utah State University.
 I study global scale patterns in ecological systems related to things like
 biodiversity.
 
-And I'm a Software Carpentry student myself. 
+And I'm a Software Carpentry student myself.
 
 I started doing Software Carpentry three years ago when my daughter was born.
 For the first few months it was pretty hard to get any focused work done
