@@ -320,6 +320,13 @@ could do something like
 Database Design
 ---------------
 
+1. Order doesn't matter
+2. No duplicate rows
+3. Every row-column combination contains one value
+4. One field per type of information
+5. No redundant information
+6. One table per class of information
+
 Each field in a database should store a single value.  Information should not be
 duplicated in a database.  Each table should be about a single subject (avoids
 unnecessary replication).  When naming fields, you should think about meaning,
